@@ -19,7 +19,7 @@
                 <p>연결할 앱 더보기를 선택합니다.</p>
             </step>
             <step>
-                <img alt="part-1-ch-02-3.png" src="part-1-ch-02-3.png"/>
+                <img alt="part-1-ch-01-3.png" src="part-1-ch-01-3.png"/>
                 <p>Colaboratory 를 검색하여 설치합니다.</p>
             </step>
             <step>
@@ -34,6 +34,218 @@
     </chapter>
 
     <chapter title="하드웨어 성능 및 GPU 설정">
+        <procedure title="하드웨어 성능 확인">
+            <step>
+                <img alt="1-01-6.png" src="1-01-6.png"/>
+                <p>왼쪽의 실행 버튼을 통해 해당 명령줄을 실행할 수 있습니다.</p>
+            </step>
+            <step>
+                <img alt="1-01-7.png" src="1-01-7.png"/>
+                <p>우상단에 메모리와 디스크의 상태를 확일할 수 있습니다.</p>
+            </step>
+            <step>
+                <code-block lang="python">
+                    # OS 환경
+                    !cat /etc/issue.net
 
+                    # CPU 사양
+                    !head /proc/cpuinfo
+
+                    # 메모리 사양
+                    !head -n 3 /proc/meminfo
+
+                    # python 버전
+                    !python --version
+                </code-block>
+            </step>
+        </procedure>
+        <procedure title="GPU 설정">
+            <step>
+                <img alt="1-01-8.png" src="1-01-8.png"/>
+                <p><path>수정 | 노트 설정</path> 메뉴를 선택합니다.</p>
+            </step>
+            <step>
+                <img alt="1-01-9.png" src="1-01-9.png"/>
+                <p>하드웨어 가속기 메뉴에서 GPU 설정을 조정할 수 있습니다.</p>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="기본 메뉴 설명">
+        <procedure title="기본 메뉴">
+            <step>
+                <img alt="1-01-10.png" src="1-01-10.png"/>
+                <p>목차를 활성화합니다.</p>
+            </step>
+            <step>
+                <img alt="1-01-11.png" src="1-01-11.png"/>
+                <list>
+                    <li>폴더 구조를 활성화합니다.</li>
+                    <li>외부 시스템이기 때문에 파일을 업로드해야 합니다.</li>
+                    <li>바로 업로드하거나, 구글 드라이브의 파일을 가져올 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-12.png" src="1-01-12.png"/>
+                <list>
+                    <li>댓글을 추가합니다.</li>
+                    <li>해당 파일에 추가할수도 있고, 특정 셀에 댓글을 추가할수도 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="파일 공유">
+        <procedure title="공유하기">
+            <step>
+                <img alt="1-01-13.png" src="1-01-13.png"/>
+                <list>
+                    <li>공유 버튼을 통해 공유가 가능합니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-14.png" src="1-01-14.png"/>
+                <list>
+                    <li>링크 복사 버튼을 통해 링크를 가져올 수 있습니다.</li>
+                    <li>액세스 권한이 있는 유저만 접근이 가능하도록 제한할 수 있습니다.</li>
+                    <li>엑세스 권한을 설정할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-15.png" src="1-01-15.png"/>
+                <list>
+                    <li>링크가 있는 모든 사용자로 설정할 경우 파일에 접근 방식을 설정할 수 있습니다.</li>
+                    <li>뷰어는 읽기 전용으로 공유됩니다.</li>
+                    <li>편집자 권한으로 공유하면 쓰기도 가능합니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="공유받기">
+            <step>
+                <img alt="1-01-16.png" src="1-01-16.png"/>
+                <list>
+                    <li>공유된 링크에 접근 시, 연결할 앱을 설정할 수 있습니다.</li>
+                    <li>Colaboratory 가 설치되지 않은 구글 계정은 설치가 필요합니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-17.png" src="1-01-17.png"/>
+                <list>
+                    <li>Colaboratory 가 설치된 구글 계정이라면 바로 열기가 가능합니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-18.png" src="1-01-18.png"/>
+                <list>
+                    <li>뷰어 권한으로 파일을 실행한 경우에는 수정이 불가합니다.</li>
+                    <li>수정을 하려면 사본을 저장한 다음 사본 파일에서 수정을 진행해야 합니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-19.png" src="1-01-19.png"/>
+                <list>
+                    <li><path>파일 | Drive에 사본 저장</path> 메뉴를 통해 간편하게 사본을 저장할 수 있습니다.</li>
+                    <li>사본 파일이 바로 실행됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-20.png" src="1-01-20.png"/>
+                <list>
+                    <li>사본은 <path>내 드라이브 | Colab Notebooks</path> 폴더에 저장됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-21.png" src="1-01-21.png"/>
+                <list>
+                    <li>사본의 이름에는 끝에 사본이 붙는데, 선택하여 수정할 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="Cell의 종류">
+        <procedure title="셀의 종류">
+            <step>
+                <img alt="1-01-22.png" src="1-01-22.png"/>
+                <list>
+                    <li>코드 셀은 코드를 입력하고 실행하는 셀을 의미합니다.</li>
+                    <li>파이썬 코드를 작성할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-23.png" src="1-01-23.png"/>
+                <list>
+                    <li>텍스트 셀은 문구를 입력하여 설명을 추가하는 셀을 의미합니다.</li>
+                    <li>마크업 언어로 구성됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="셀의 추가">
+            <step>
+                <img alt="1-01-24.png" src="1-01-24.png"/>
+                <list>
+                    <li>위 + 메뉴를 통해 셀을 추가할 수 있습니다.</li>
+                    <li>코드 셀과 텍스트 셀을 선택하여 추가할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-25.png" src="1-01-25.png"/>
+                <list>
+                    <li>단축키를 통해 간편하게 셀을 추가할 수 있습니다.</li>
+                    <li>코드 셀이 추가되며, 포커싱된 부분의 위 또는 아래에 셀 추가가 가능합니다.</li>
+                    <li>동시에 누르지 않고, 순차적으로 눌러도 동작합니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="셀의 삭제">
+            <step>
+                <img alt="1-01-26.png" src="1-01-26.png"/>
+                <list>
+                    <li>셀의 오른쪽 메뉴 중, 셀 삭제 버튼을 통해 삭제가 가능합니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-27.png" src="1-01-27.png"/>
+                <list>
+                    <li>단축키를 통해 간편하게 셀을 삭제할 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="셀의 타입 변경">
+            <step>
+                <img alt="1-01-28.png" src="1-01-28.png"/>
+                <list>
+                    <li>단축키를 통해 셀의 타입을 변경할 수 있습니다.</li>
+                    <li>코드 셀을 텍스트 셀로 바꾸는 단축키와 텍스트 셀을 코드 셀로 바꾸는 단축키가 다릅니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="Cell 부가기능">
+        <procedure title="실행과 출력">
+            <step>
+                <img alt="1-01-29.png" src="1-01-29.png"/>
+                <list>
+                    <li>셀의 왼쪽의 실행 버튼을 통해 해당 셀을 실행할 수 있습니다.</li>
+                    <li>실행 시, 하단에 실행 결과(output)이 출력됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-30.png" src="1-01-30.png"/>
+                <list>
+                    <li>출력 결과는 왼쪽의 x 버튼을 사용하여 삭제할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-01-31.png" src="1-01-31.png"/>
+                <list>
+                    <li>셀의 실행은 단축키를 통해서도 가능합니다.</li>
+                    <li>command + enter 입력으로 셀을 바로 실행할 수 있습니다.</li>
+                    <li>shift + enter 입력으로 해당 셀을 실행하고 다음 셀로 커서를 이동시킬 수 있습니다.</li>
+                    <li>option + enter 입력으로 해당 셀을 실행하고 아래에 새로운 셀을 생성하고 커서를 이동시킬 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
     </chapter>
 </topic>
