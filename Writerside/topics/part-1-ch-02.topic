@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/xhtml-entities.dtd">
+<topic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="https://resources.jetbrains.com/writerside/1.0/topic.v2.xsd"
+       title="Ch 02. Python" id="part-1-ch-02">
+
+    <chapter title="Python 기초">
+        <procedure title="출력">
+            <step>
+                <img alt="1-02-02.png" src="1-02-02.png"/>
+                <list>
+                    <li>print 함수를 사용하여 값을 출력할 수 있습니다.</li>
+                    <li>매개변수로 받은 값을 출력합니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-02-03.png" src="1-02-03.png"/>
+                <list>
+                    <li>기본적으로 마지막 라인에 호출된 변수나 리터럴의 값을 출력합니다.</li>
+                    <li>가장 마지막 변수나 리터럴 한 개만 출력합니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="변수와 대입">
+            <step>
+                <code-block lang="python">
+                    a = 1
+                    A = 1
+                    변수 = 1
+                </code-block>
+                <list>
+                    <li>변수는 데이터를 담는 그릇입니다.</li>
+                    <li>알파벳 대소문자 모두 가능합니다.</li>
+                    <li>한글도 가능하지만 한글을 사용하는 것은 추천하지 않습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    # 가능
+                    a1 = 1
+                    a_ = 1
+                    _a = 1
+
+                    # 불가능
+                    1a = 1
+                    * = 1
+                    a$ = 1
+                    a b = 1
+                </code-block>
+            </step>
+        </procedure>
+        <procedure title="데이터 타입">
+            <step>
+                <code-block lang="python">
+                    a = 1
+                    type(a) # int
+                    if a:
+                        print('1은 참')
+                    else:
+                        print('1은 거짓')
+                </code-block>
+                <list>
+                    <li>정수가 할당된 변수는 int 타입입니다.</li>
+                    <li>int 타입은 0일 때, 거짓을 표현합니다.</li>
+                    <li>1이상의 숫자일 때는 참을 표현합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = 3.14
+                    type(a) # float
+                </code-block>
+                <list>
+                    <li>소수가 할당된 변수는 float 타입입니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = '안녕하세요'
+                    type(a) # str
+                    b = "안녕하세요"
+                </code-block>
+                <list>
+                    <li>문자열이 할당되는 변수는 str 타입입니다.</li>
+                    <li>문자열의 리터럴은 ' 또는 " 를 사용하여 선언할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = False
+                    type(a) # bool
+                    b = True
+                </code-block>
+                <list>
+                    <li>True 또는 False 의 값이 할당된 변수는 bool 타입입니다.</li>
+                    <li>True, False 두 가지 값만 가질 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = None
+                    type(a) # NoneType
+                    print(a) # None
+                </code-block>
+                <list>
+                    <li>아무 값도 할당되지 않은 상태를 의미하는 None 타입도 있습니다.</li>
+                    <li>타 프로그래밍 언어의 null 과 같은 역할을 합니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="데이터 타입 (집합)">
+        <procedure title="list">
+            <step>
+                <code-block lang="python">
+                    a = []
+                    type(a) # list
+                    a = [1, 2, 3, 4, 5]
+                    a
+                </code-block>
+                <list>
+                    <li>list 는 순서가 있는 집합을 의미합니다.</li>
+                    <li>[] 를 사용하여 선언하며, 초기값을 주면서 선언할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = []
+                    a.append(1)
+                    a.append(2)
+
+                    a.remove(1)
+                    a.remove(1) # error
+                </code-block>
+                <list>
+                    <li>append 메서드를 사용하여 리스트에 값을 추가할 수 있습니다.</li>
+                    <li>remove 메서드를 사용하여 리스트에 값을 제거할 수 있습니다.</li>
+                    <li>존재하지 않는 값을 제거하려 할 경우, 에러가 발생합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = [1, 2, 3, 1, 2, 3]
+                    a.remove(1)
+                    print(a) # [2, 3, 1, 2, 3]
+                </code-block>
+                <list>
+                    <li>리스트에는 동일한 값이 중복해서 포함될 수 있습니다.</li>
+                    <li>중복된 값을 제거하면, 더 앞에 위치한 값이 우선적으로 제거됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = [1, 2, 3, 4]
+                    print(a[0]) # 1
+                    print(a[4]) # error
+                    print(a[-1]) # 4
+                    print(a[-5]) # error
+                </code-block>
+                <list>
+                    <li>리스트에 인덱스로 접근하여 값을 가져올 수 있습니다.</li>
+                    <li>인덱스는 0번 부터 시작합니다.</li>
+                    <li>영역를 초과하는 인덱스로 접근하면 에러가 발생합니다.</li>
+                    <li>-값의 인덱스로 접근하면, 역방향으로 값을 가져옵니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = [1, 2, 3, 4]
+                    a[0] = 100
+                    print(a) # [100, 2, 3, 4]
+                    len(a) # 4
+                </code-block>
+                <list>
+                    <li>리스트는 인덱스로 접근하여 값을 변경할 수 있습니다.</li>
+                    <li>len 함수를 사용하여 리스트의 길이를 가져올 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="tuple">
+            <step>
+                <code-block lang="python">
+                    a = (1, 2, 3, 4, 5)
+                    typeof(a) # tuple
+                    
+                    a.append(1) # error
+                    a.remove(1) # error
+                    a[0] = 1 # error
+                </code-block>
+                <list>
+                    <li>tuple 은 순서가 있는 집합이고, 읽기 전용입니다.</li>
+                    <li>읽기 전용이기 때문에 값을 추가하거나 제거할 수 없습니다.</li>
+                    <li>인덱스로 접근하여 값을 변경하는 것도 불가능합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    len(a) # 5
+                    print(a) # (1, 2, 3, 4, 5)
+                </code-block>
+                <list>
+                    <li>len 함수를 사용하여 튜플의 길이를 가져올 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="set">
+            <step>
+                <code-block lang="python">
+                    a = set()
+                    typeof(a) # set
+                    
+                    a.add(1)
+                    a.add(2)
+                    a.add(3)
+                    print(a) # {1, 2, 3}
+                </code-block>
+                <list>
+                    <li>set 은 순서가 없고 중복이 불가능한 데이터 집합입니다.</li>
+                    <li>add 메서드를 사용하여 값을 추가할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a.add(1)
+                    a.add(2)
+                    a.add(3)
+                    print(a) # {1, 2, 3}
+                    len(a) # 3
+                </code-block>
+                <list>
+                    <li>셋은 중복이 불가능하기 때문에, 동일한 값을 추가하면 상태가 변하지 않습니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="dict">
+            <step>
+                <code-block lang="python">
+                    a = dict()
+                    type(a) # dict
+                    print(a) # {}
+
+                    a['apple'] = 'good'
+                    a[0] = 123
+                    a[3.14] = 1
+                    print(a) # {0: 123, 3.14: 1, 'apple': 'good'}
+                </code-block>
+                <list>
+                    <li>dict 는 사전형 집합으로 키와 값의 쌍으로 구성됩니다.</li>
+                    <li>[]와 키, 값을 대입하여 값을 추가할 수 있습니다.</li>
+                    <li>키와 값에는 모든 타입이 입력될 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a['apple'] = 333
+                    print(a) # {0: 123, 3.14: 1, 'apple': 333}
+                    len(a) # 3
+                </code-block>
+                <list>
+                    <li>값을 추가하는 것과 동일한 형태로 값을 변경할 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="연산자">
+        <procedure title="사칙연산">
+            <step>
+                <code-block lang="python">
+                    a = 10
+                    b = 3
+                    
+                    print(a + b) # 13
+                    print(a - b) # 7
+                    print(a / b) # 3.3333333333333335
+                    print(a * b) # 30
+                </code-block>
+                <list>
+                    <li>정수의 경우 일반적인 수학과 동일하게 사칙연산이 동작합니다.</li>
+                    <li>나눗셈의 경우 결과는 float 타입을 가지게 됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = 10
+                    b = 3
+
+                    print(a % b) # 1
+                    print(a // b) # 3
+                    print(a ** b) # 1000
+                </code-block>
+                <list>
+                    <li>% 연산은 몫을 나눈 나머지를 가져옵니다.</li>
+                    <li>// 연산은 나눗셈에 대한 몫을 정수형으로 가져옵니다.</li>
+                    <li>** 연산은 제곱에 대한 결과를 가져옵니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    print(10 + 2 * 5) # 20
+                    print((10 + 2) * 5) # 60
+                </code-block>
+                <list>
+                    <li>일반적인 수학과 동일하게 곱셉과 나눗셉을 먼저 계산합니다.</li>
+                    <li>괄호를 사용하여 먼저 계산하도록 설정할 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="문자열의 연산">
+            <step>
+                <code-block lang="python">
+                    a = '반갑습니다.'
+                    b = '안녕하세요.'
+
+                    print(a + b) # '반갑습니다.안녕하세요'
+                    print(a - b) # error
+                    print(a * b) # error
+                    print(a / b) # error
+                </code-block>
+                <list>
+                    <li>문자열도 사칙연산이 가능합니다.</li>
+                    <li>문자열의 덧셈은 두 문자열을 합친 하나의 문자열을 결과로 가져옵니다.</li>
+                    <li>덧셈 이외의 연산은 불가능합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = '10'
+                    b = '20'
+
+                    print(a + b) # '1020'
+                </code-block>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="함수">
+        <procedure title="주석(comment)과 들여쓰기(indent)">
+            <step>
+                <code-block lang="python">
+                    # 이렇게 코멘트를 달 수 있습니다.
+                    a = 3
+                    b = 4
+
+                    # a + b 연산을 수행해 봅시다.
+                    print(a + b)
+                </code-block>
+                <list>
+                    <li>코드 사이사이에 코멘트를 추가할 때 사용합니다.</li>
+                    <li>코드 셀에서만 동작합니다.</li>
+                    <li>일반적으로 # 기호 이후에 한칸 띄고 사용합니다.</li>
+                </list>
+            </step>
+            <step>
+                <img alt="1-02-04.png" src="1-02-04.png"/>
+                <list>
+                    <li>파이썬에서 들여쓰기는 단순히 코드를 정리하기 위한 것 이외에 굉장히 중요한 특징을 가지고 있습니다.</li>
+                    <li><shortcut>tabs</shortcut> 키를 한 번 누르면 들여쓰기 한 번의 효과입니다.</li>
+                    <li><path>설정 | 편집기 | 들여쓰기</path> 메뉴에서 들여쓰기의 크기를 설정할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    def my_func():
+                        print('hello')
+
+                    a = 3
+                        b = 4 # error
+                </code-block>
+                <list>
+                    <li>기본적으로 colab 에서 자동적으로 들여쓰기를 관리해 줍니다.</li>
+                    <li>함수 선언 이후에는 들여쓰기가 필요합니다.</li>
+                    <li>들여쓰기가 필요하지 않은 곳에 들여쓰기를 진행하면, 에러가 발생합니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="함수">
+            <step>
+                <code-block lang="python">
+                    def func(a, b, c):
+                        return (a + b) * c
+
+                    func(1, 2, 3)
+                </code-block>
+                <list>
+                    <li>함수란 반복적으로 사용되는 부분을 정의하여 재사용 가능하도록 만든것을 말합니다.</li>
+                    <li>def 함수이름(파라미터1, 파라미터2, ...): 구조를 가집니다.</li>
+                    <li>파라미터는 넘겨받은 변수를 말합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    # 리턴이 없는 경우
+                    def my_func(a, b):
+                        print(a, b)
+                    my_func(1, 10)
+
+                    # 리턴이 있는 경우
+                    def my_func(a, b):
+                        s = a + b
+                        return s
+                    result = my_func(1, 10)
+                    print(result)
+                </code-block>
+                <list>
+                    <li>함수는 값을 반환할 수도 있고, 하지 않을 수도 있습니다.</li>
+                    <li>반환값이 있는 경우에는 변수에 값을 다시 할당할 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="제어문">
+        <procedure title="비교 연산자">
+            <step>
+                <code-block lang="python">
+                    1 > 2 # False
+                    10 >= 10 # True
+                </code-block>
+                <list>
+                    <li>비교 연산자는 주로 대소비교를 할 때 사용합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    2 = 2 # error
+                    2 == 2 # True
+                    2 == 3 # False
+                </code-block>
+                <list>
+                    <li>파이썬에서 =는 대입 연산자입니다.</li>
+                    <li>따라서, 같다라는 의미로 사용되는 연산자는 == 입니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    2 != 2 # False
+                    1 != 2 # True
+                </code-block>
+                <list>
+                    <li>!= 는 같지 않다라는 의미로 사용됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="조건문">
+            <step>
+                <code-block lang="python">
+                    if 5 > 3:
+                        print('참')
+
+                    print('끝')
+                </code-block>
+                <list>
+                    <li>조건문은 주어진 조건이 참인 경우 그 다음 로직을 실행하는 구문입니다.</li>
+                    <li>if 는 이후에 조건이 오며, 해당 조건이 성립하는 경우 실행됩니다.</li>
+                    <li>if 문에서는 들여쓰기가 중요하며, 이후에 들여쓰여지지 않은 부분은 if 에 포함되지 않은 영역입니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    if 5 > 3:
+                        print('if 구문 실행')
+                    else:
+                        print('else 구문 실행')
+                </code-block>
+                <list>
+                    <li>else 는 if 조건 후에 따라오며, if 조건에 성립하지 않는 경우에 실행됩니다.</li>
+                    <li>역시 들여쓰기와 : 를 반드시 추가해주어야 합니다.</li>
+                    <li>if 없이 else 구문만 있다면 에러가 발생합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    if 3 > 5:
+                        print('if 구문 실행')
+                    elif 3 > 4:
+                        print('elif 구문 실행')
+                    else:
+                        print('else 구문 실행')
+                </code-block>
+                <list>
+                    <li>elif 구문은 세 가지 이상의 분기 조건을 설정할 때 사용합니다.</li>
+                    <li>elif 구문이 참인 조건이 여러개인 경우 가장 상위의 로직만 실행됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="논리 연산자">
+            <step>
+                <code-block lang="python">
+                    True and True and True # True
+                    True and False and True # False
+
+                    if (0 > 1) and (0 > 2):
+                        print('모두 참')
+                    else:
+                        print('거짓')
+                </code-block>
+                <list>
+                    <li>논리 연산자인 and 와 or 는 두 가지 이상의 조건을 다룰 때 사용합니다.</li>
+                    <li>and 조건은 모두 만족할 때 참으로 인식합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    True and False and False # True
+                    False or False or False # False
+
+                    if (0 > 1) or (0 > 10):
+                        print('하나라도 참')
+                    else:
+                        print('모두 거짓')
+                </code-block>
+                <list>
+                    <li>or 조건은 조건 중 하나라도 성립할 때 참으로 인식합니다.</li>
+                    <li>모든 조건이 성립하지 않아야 거짓이 됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="반복문">
+            <step>
+                <code-block lang="python">
+                    mylist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    for n in mylist:
+                        print(n)
+                </code-block>
+                <list>
+                    <li>반복문은 list, dict, set 과 같은 집합 데이터 타입에 대한 순회를 돌며 로직을 처리하는데 사용합니다.</li>
+                    <li>for 와 in 을 사용하여 표현하며, 각 요소에 대해 내부 로직을 수행합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    for n in mylist:
+                        if i % 2 == 1:
+                            continue
+
+                        print(n)
+                </code-block>
+                <list>
+                    <li>continue 구문을 사용하면 하위의 로직은 건너뛰는 효과를 줄 수 있습니다.</li>
+                    <li>즉시 다음 요소로 넘어가서 로직을 수행합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    for n in mylist:
+                        if i >= 6:
+                            break
+
+                        print(n)
+                </code-block>
+                <list>
+                    <li>break 구문을 사용하면 특정 조건이 되었을 때, 반복문을 빠져나올 수 있습니다.</li>
+                    <li>이후의 요소에 대한 처리는 진행하지 않습니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="기타 구문">
+        <procedure title="List Comprehension">
+            <step>
+                <code-block lang="python">
+                    mylist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                    even = []
+
+                    for i in mylist:
+                        if i % 2 == 0:
+                            even.append(i)
+
+                    even = [i for i in mylist if i % 2 == 0]
+                </code-block>
+                <list>
+                    <li>List Comprehension 을 활용하면, 복잡한 for 문을 간단하게 표현할 수 있습니다.</li>
+                    <li>해당 리스트의 필터링 된 리스트를 얻기 위해, for 문과 if 문이 결합된 형태입니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    even = [i + 2 for i in mylist]
+                </code-block>
+                <list>
+                    <li>조건 필터가 없이도 사용할 수 있습니다.</li>
+                    <li>앞 부분의 내용을 변형시킴으로서 결과 요소를 가공할 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="문자열 다루기">
+            <step>
+                <code-block lang="python">
+                    a = 'banana'
+                    len(a) # 6
+
+                    a = 'banana pen'
+                    len(a) # 10
+
+                    a = '한글'
+                    len(a) # 2
+
+                    a = '한글 킹왕짱'
+                    len(a) # 6
+                </code-block>
+                <list>
+                    <li>문자열을 텍스트 분석을 위해 많이 다루게 되는 데이터 타입입니다.</li>
+                    <li>문자열의 길이는 len 함수를 사용하여 구할 수 있습니다.</li>
+                    <li>한글도 글자수를 구할 수 있고, 띄어쓰기도 한 개의 문자로 계산됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = 'This is a pen'
+                    a.split(' ') # ['This', 'is', 'a', 'pen']
+                    aa = a.split() # ['This', 'is', 'a', 'pen']
+                    a[2] # 'a'
+                </code-block>
+                <list>
+                    <li>split 함수를 사용하여 문자열을 분리할 수 있습니다.</li>
+                    <li>매개변수로 분리의 기준이 될 문자를 지정할 수 있으며, 기본값은 띄어쓰기 입니다.</li>
+                    <li>함수의 결과는 문자열 리스트입니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = 'My name is Hello'
+                    a.lower() # 'my name is hello'
+                    a.upper() # 'MY NAME IS HELLO'
+                </code-block>
+                <list>
+                    <li>lower 와 upper 함수를 사용하여 문자열을 대문자나 소문자로 변환할 수 있습니다.</li>
+                    <li>두 문자열의 내용을 비교할 때 유용합니다.</li>
+                    <li>한글은 대소문자가 없기 때문에 무의미한 변환이 됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = '01-sample.png'
+                    b = '02-sample.jpg'
+                    c = '03-sample.pdf'
+
+                    a.startswith('01') # True
+                    a.endswith('.jpg') # False
+                </code-block>
+                <list>
+                    <li>startswith, endswith 함수를 사용하여 문자열의 시작과 끝은 검사할 수 있습니다.</li>
+                    <li>매개변수로 전달하는 문자열로 시작하거나 끝나는지 검사합니다.</li>
+                    <li>반환값은 bool 타입으로 조건에 부합하는지 결과를 반환합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = '01-sample.png'
+                    new_a = a.replace('.png', '.jpg')
+                    a # '01-sample.png'
+                    new_a # '01-sample.jpg'
+                </code-block>
+                <list>
+                    <li>replace 함수를 사용하여, 문자열의 특정 부분을 다른 문자로 변경할 수 있습니다.</li>
+                    <li>원본 문자열이 변경되진 않고, 변경된 새로운 문자열을 반환합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = '    01-sample.png      '
+                    b = '01-sample.png'
+                    a == b # False
+
+                    a.strip() # '01-sample.png'
+
+                    a.strip() == b # True
+                </code-block>
+                <list>
+                    <li>strip 함수를 사용하면 문자열 양 끝의 불필요한 공백을 제거합니다.</li>
+                    <li>앞뒤의 공백이 추가되는 것만으로도 두 문자열의 비교 연산은 성립되지 않습니다.</li>
+                    <li>공백을 제거하고 비교해야 참으로 성립됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="패키지와 모듈">
+            <step>
+                <code-block lang="python">
+                    from IPython.display import Image
+                </code-block>
+                <list>
+                    <li>여러 함수들이 포함되어 하나의 .py 파일로 구성된 것을 모듈이라고 합니다.</li>
+                    <li>여러개의 모듈을 폴더로 그룹화하듯이 그룹화시킨 것을 패키지라고 합니다.</li>
+                    <li>패키지는 라이브러리라고도 불립니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    import pandas
+
+                    pandas.DataFrame()
+                </code-block>
+                <list>
+                    <li>위 코드는 pandas 패키지를 불러오겠다는 의미입니다.</li>
+                    <li>pandas 패키지는 colab 에 이미 설치되어 있기 때문에 바로 사용할 수 있습니다.</li>
+                    <li>pandas 패키지의 DataFrame 모듈을 사용하기 위해서는 . 을 찍고 이어서 사용하면 됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    from pandas import DataFrame
+
+                    DataFrame()
+                </code-block>
+                <list>
+                    <li>import 구문은 패키지와 모듈 둘 다 가져올 수 있습니다.</li>
+                    <li>위 코드는 pandas 패키지 전부가 아니라 DataFrame 모듈만 불러오는 표현입니다.</li>
+                    <li>이제 패키지 명을 붙일 필요 없이 바로 DataFrame 을 사용할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    import pandas as pd
+
+                    pd.DataFrame()
+                </code-block>
+                <list>
+                    <li>as 문법을 사용하여 별칭(alias)를 지어줄 수 있습니다.</li>
+                    <li>패키지의 이름을 전부 나열할 필요없이 간단하게 약어를 사용할 수 있습니다.</li>
+                    <li>별칭은 자주 사용되는 패키지라면 보통 관례적으로 사용하는 이름이 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+</topic>

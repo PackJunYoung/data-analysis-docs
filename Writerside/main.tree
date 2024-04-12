@@ -8,5 +8,6 @@
 
     <toc-element topic="part-1.topic">
         <toc-element topic="part-1-ch-01.topic"/>
+        <toc-element topic="part-1-ch-02.topic"/>
     </toc-element>
 </instance-profile>
