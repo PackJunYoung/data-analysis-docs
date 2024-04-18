@@ -181,7 +181,7 @@
         </procedure>
     </chapter>
 
-    <chapter title="슬라이싱 (Slicing)">
+    <chapter title="indexing, slicing">
         <procedure title="인덱스를 지정하여 색인">
             <step>
                 <code-block lang="python">
@@ -292,7 +292,7 @@
         </procedure>
     </chapter>
 
-    <chapter title="fancy 인덱싱">
+    <chapter title="fancy indexing">
         <procedure>
             <step>
                 <code-block lang="python">
@@ -332,6 +332,502 @@
                 </code-block>
                 <list>
                     <li>2차원 배열에서도 동일하게 fancy 인덱스를 적용할 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="boolean indexing">
+        <procedure>
+            <step>
+                <code-block lang="python">
+                    arr = np.array([1, 2, 3, 4, 5, 6, 7])
+                    arr2d = np.array([[1, 2, 3, 4],
+                                      [5, 6, 7, 8],
+                                      [9, 10, 11, 12]])
+                </code-block>
+                <list>
+                    <li>boolean 인덱싱은 조건 필터링을 통하여 결과를 색인하는 방법입니다.</li>
+                    <li>테스트를 위한 1차원, 2차원 배열을 생성해 줍니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    myTrueFalse = [True, False, True]
+                    arr[myTrueFalse]
+                    # IndexError
+                </code-block>
+                <list>
+                    <li>boolean 타입의 조건값이 있는 리스트를 인덱싱하여 boolean 인덱싱을 적용할 수 있습니다.</li>
+                    <li>하지만, 차원의 수가 같지 않은 리스트를 적용한다면 에러가 발생합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    myTrueFalse = [True, False, True, False, True, False, True]
+                    arr[myTrueFalse]
+                    # -> array([1, 3, 5, 7])
+                </code-block>
+                <list>
+                    <li>차원의 수를 동일하게 맞추면 에러가 발생하지 않고 결과가 출력됩니다.</li>
+                    <li>True 로 전달된 요소의 항목만 필터링된 새로운 배열이 반환됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="조건필터">
+            <step>
+                <code-block lang="python">
+                    arr2d > 2
+                    # -> array([[False, False,  True,  True],
+                    #           [ True,  True,  True,  True],
+                    #           [ True,  True,  True,  True]])
+                </code-block>
+                <list>
+                    <li>배열에 조건을 추가하게 되면, 각 요소에 조건의 결과가 출력되는 배열을 반환합니다.</li>
+                    <li>이 배열을 boolean 인덱싱에 활용할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    <![CDATA[
+                    arr2d[arr2d > 2]
+                    # -> array([3,  4,  5,  6,  7,  8,  9, 10, 11, 12])
+
+                    arr2d[arr2d < 5]
+                    # -> array([1, 2, 3, 4])
+                    ]]>
+                </code-block>
+                <list>
+                    <li>조건식을 꺽쇠 내부에 바로 사용하여 조건필터를 적용할 수 있습니다.</li>
+                    <li>결과는 조건에 부합하는 요소로 구성된 1차원 배열로 반환됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="arange">
+        <procedure>
+            <step>
+                <code-block lang="python">
+                    arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+                    arr
+                    # -> array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
+                </code-block>
+                <list>
+                    <li>1에서 10까지의 요소를 가진 배열을 생성합니다.</li>
+                    <li>순차적인 요소의 배열을 생성할 때, arange 함수를 사용하면 훨씬 간편하게 배열을 생성할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    arr = np.arange(1, 11)
+                    arr
+                    # -> array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
+                </code-block>
+                <list>
+                    <li>arange 함수에서 첫번째 매개변수는 시작 값, 두번째 매개변수는 끝 값을 나타냅니다.</li>
+                    <li>시작 값은 결과 배열에 포함이 되지만, 끝 값은 포함이 되지 않습니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="매개변수 키워드 사용">
+            <step>
+                <code-block lang="python">
+                    arr = np.arange(start=1, stop=11)
+                    arr
+                    # -> array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
+                </code-block>
+                <list>
+                    <li>함수의 매개변수에 키워드를 지정해서 호출해줘서 좀 더 명시적인 효과를 줄 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    arr = np.arange(stop=11, start=1)
+                    arr
+                    # -> array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10])
+                </code-block>
+                <list>
+                    <li>키워드를 명시해주는 경우에는 매개변수의 순서를 바꿔서 호출하는 것도 가능합니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="step 매개변수 사용">
+            <step>
+                <code-block lang="python">
+                    arr = np.arange(1, 11, 2)
+                    arr
+                    # -> array([1, 3, 5, 7, 9])
+                </code-block>
+                <list>
+                    <li>세번째 매개변수인 step 을 사용하면, 요소의 숫자 간격을 지정할 수 있습니다.</li>
+                    <li>매개변수를 사용하지 않는 경우에는 기본값인 1이 사용됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    arr = np.arange(start=1, stop=11, step=2)
+                    arr
+                    # -> array([1, 3, 5, 7, 9])
+                </code-block>
+                <list>
+                    <li>step 을 사용하는 경우에도 역시 키워드를 명시하여 호출할 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="파이썬의 range">
+            <step>
+                <code-block lang="python">
+                    for i in range(1, 11):
+                        print(i)
+                    # -> 1 ... 10
+                </code-block>
+                <list>
+                    <li>numpy 의 arange 는 파이썬의 기본 함수인 range 와 유사한 형태를 가집니다.</li>
+                    <li>파이썬의 range 를 사용하면 순차적인 리스트를 생성할 수 있습니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    for i in range(1, 11, 2):
+                        print(i)
+                    # -> 1 3 ... 9
+                </code-block>
+                <list>
+                    <li>range 역시 step 을 지정하여 요소의 간격을 변경할 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="sorting">
+        <procedure>
+            <step>
+                <code-block lang="python">
+                    arr = np.array([1, 10, 5, 8, 2, 4, 3, 6, 8, 7, 9])
+                    arr
+                    # -> array([ 1, 10,  5,  8,  2,  4,  3,  6,  8,  7,  9])
+                </code-block>
+                <list>
+                    <li>정렬 기능을 확인하기 위해 정렬되지 않은 배열을 하나 생성합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    np.sort(arr)
+                    # -> array([ 1,  2,  3,  4,  5,  6,  7,  8,  8,  9, 10])
+
+                    np.sort(arr)[::-1]
+                    # -> array([10,  9,  8,  8,  7,  6,  5,  4,  3,  2,  1])
+                </code-block>
+                <list>
+                    <li>np.sort 함수를 사용하여 배열을 정렬시킬 수 있습니다.</li>
+                    <li>기본적으로는 오름차순으로 정렬됩니다.</li>
+                    <li>[::-1] 를 추가하면 내림차순으로 정렬이 됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="새로운 변수에 할당">
+            <step>
+                <code-block lang="python">
+                    arr2 = np.sort(arr)
+                    arr2
+                    # -> array([ 1,  2,  3,  4,  5,  6,  7,  8,  8,  9, 10])
+
+                    arr
+                    # -> array([ 1, 10,  5,  8,  2,  4,  3,  6,  8,  7,  9])
+                </code-block>
+                <list>
+                    <li>np.sort 함수를 사용하면 정렬된 결과를 반환하지만, 원본 배열의 내용을 변경하지는 않습니다.</li>
+                    <li>정렬된 결과를 활용하기 위해서는 새로운 변수에 할당해 주어야 합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    arr.sort()
+                    arr
+                    # -> array([ 1,  2,  3,  4,  5,  6,  7,  8,  8,  9, 10])
+                </code-block>
+                <list>
+                    <li>배열에서 sort 매서드를 호출시키면 실제 내용을 정렬시킬 수 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="n차원 정렬">
+            <step>
+                <code-block lang="python">
+                    arr2d = np.array([[5, 6, 7, 8],
+                                      [4, 3, 2, 1],
+                                      [10, 9, 12, 11]])
+                    arr2d.shape
+                    # -> (3, 4)
+                </code-block>
+                <list>
+                    <li>2차원 정렬을 확인하기 위해 2차원 배열을 생성합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    arr2d
+                    # -> array([[ 5,  6,  7,  8],
+                    #           [ 4,  3,  2,  1],
+                    #           [10,  9, 12, 11]])
+
+                    np.sort(arr2d, axis=1)
+                    # -> array([[ 5,  6,  7,  8],
+                    #           [ 1,  2,  3,  4],
+                    #           [ 9, 10, 11, 12]])
+
+                    np.sort(arr2d, axis=0)
+                    # -> array([[ 4,  3,  2,  1],
+                    #           [ 5,  6,  7,  8],
+                    #           [10,  9, 12, 11]])
+                </code-block>
+                <list>
+                    <li>2차원 이상의 배열을 정렬하기 위해서는 sort 함수를 호출할 때, axis 를 명시해 주어야 합니다.</li>
+                    <li>axis 1로 호출하면 열이 정렬됩니다.</li>
+                    <li>axis 0로 호출하면 행이 정렬됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="argsort">
+            <step>
+                <code-block lang="python">
+                    np.argsort(arr2d, axis=1)
+                    # -> array([[0, 1, 2, 3],
+                    #           [3, 2, 1, 0],
+                    #           [1, 0, 3, 2]])
+                </code-block>
+                <list>
+                    <li>argsort 함수를 사용하면, 각 요소의 정렬된 인덱스를 가져옵니다.</li>
+                    <li>argsort 함수도 2차원 이상의 배열이라면 axis 매개변수를 지정해주어야 합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    np.argsort(arr2d, axis=0)
+                    # -> array([[1, 1, 1, 1],
+                    #           [0, 0, 0, 0],
+                    #           [2, 2, 2, 2]])
+                </code-block>
+                <list>
+                    <li>axis=0 으로 지정하면 각 열을 정렬한 인덱스 배열을 생성합니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="행렬 (matrix)">
+        <procedure title="덧셈">
+            <step>
+                <code-block lang="python">
+                    a = np.array([[1, 2, 3],
+                                  [2, 3, 4]])
+
+                    b = np.array([[3, 4, 5],
+                                  [1, 2, 3]])
+
+                    a + b
+                    # -> array([[4, 6, 8],
+                    #           [3, 5, 7]])
+                </code-block>
+                <list>
+                    <li>행렬의 덧셈은 각 포지션의 요소들이 각각 덧셈을 진행합니다.</li>
+                    <li>덧셈은 반드시 두 행렬의 shape 이 동일해야 합니다.</li>
+                    <li>결과의 shape 역시 연산에 사용된 두 행렬의 shape 과 동일합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    c = np.array([[1, 2, 3],
+                                  [2, 3, 4]])
+
+                    d = np.array([[1, 2],
+                                  [3, 4],
+                                  [5, 6]])
+
+                    c + d
+                    # -> ValueError: operands could not be broadcast together with shapes (2,3) (3,2)
+                </code-block>
+                <list>
+                    <li>두 행렬의 shape 이 다른 경우에는 에러가 발생합니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="합계 (sum)">
+            <step>
+                <code-block lang="python">
+                    a = np.array([[1, 2, 3],
+                                  [2, 3, 4]])
+
+                    np.sum(a, axis=0)
+                    # -> array([3, 5, 7])
+                </code-block>
+                <list>
+                    <li>np.sum 함수를 사용하면, 행렬의 각 차원의 합을 구할 수 있습니다.</li>
+                    <li>2차원 이상의 배열이라면, 함수를 호출할 때 axis 매개변수를 전달해주어야 합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    np.sum(a, axis=1)
+                    # -> array([6, 9])
+                </code-block>
+                <list>
+                    <li>axis=1 을 전달하는 경우에는 각 행의 합을 출력합니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="뺄셈">
+            <step>
+                <code-block lang="python">
+                    a = np.array([[1, 2, 3],
+                                  [2, 3, 4]])
+
+                    b = np.array([[3, 4, 5],
+                                  [1, 2, 3]])
+
+                    a - b
+                    # -> array([[-2, -2, -2],
+                    #           [ 1,  1,  1]])
+                </code-block>
+                <list>
+                    <li>뺄셈도 덧셈과 마찬가지로 각 포지션의 요소를 각각 연산합니다.</li>
+                    <li>역시 두 행렬의 shape 같아야만 연산이 가능합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = np.array([[1, 2, 3],
+                                  [2, 3, 4]])
+
+                    b = np.array([[1, 2],
+                                  [3, 4],
+                                  [5, 6]])
+
+                    a - b
+                    # -> ValueError: operands could not be broadcast together with shapes (2,3) (3,2)
+                </code-block>
+                <list>
+                    <li>두 행렬의 shape 이 다른 경우에는 역시 에러가 발생합니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="일반 곱셈">
+            <step>
+                <code-block lang="python">
+                    a = np.array([[1, 2, 3],
+                                  [2, 3, 4]])
+
+                    b = np.array([[3, 4, 5],
+                                  [1, 2, 3]])
+
+                    a.shape, b.shape
+                    # -> ((2, 3), (2, 3))
+
+                    a * b
+                    # -> array([[ 3,  8, 15],
+                    #           [ 2,  6, 12]])
+                </code-block>
+                <list>
+                    <li>* 통해 진행하는 일반 곱셈은 덧셈과 동일하게 두 행렬의 shape 이 같아야 합니다.</li>
+                    <li>각 포지션의 요소를 각각 곱한 결과가 생성됩니다.</li>
+                </list>
+            </step>
+        </procedure>
+        <procedure title="내적 (dot product)">
+            <step>
+                <code-block lang="python">
+                    a.shape, b.shape
+                    # -> ((2, 3), (2, 3))
+
+                    np.dot(a, b)
+                    # -> ValueError: shapes (2,3) and (2,3) not aligned: 3 (dim 1) != 2 (dim 0)
+                </code-block>
+                <list>
+                    <li>내적은 np.dot 함수를 사용하여 호출할 수 있습니다.</li>
+                    <li>내적 연산은 두 행렬의 맞닿는 차원의 값이 같아야 합니다.</li>
+                    <li>위 두 행렬은 맞닿는 차원이 3과 2로 맞지 않기 때문에 에러가 발생합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a = np.array([[1, 2, 3],
+                                  [1, 2, 3],
+                                  [2, 3, 4]])
+
+                    b = np.array([[1, 2],
+                                  [3, 4],
+                                  [5, 6]])
+
+                    a.shape, b.shape
+                    # -> ((3, 3), (3, 2))
+
+                    np.dot(a, b)
+                    # -> array([[22, 28],
+                    #           [22, 28],
+                    #           [31, 40]])
+                </code-block>
+                <list>
+                    <li>위 예시의 경우 두 행렬의 맞닿는 차원의 값이 3으로 동일하기 때문에 내적이 정상적으로 실행됩니다.</li>
+                    <li>내적의 결과는 맞닿지 않은 차원의 값으로 결정되기 때문에 (3, 2) 행렬이 됩니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a.dot(b)
+                    # -> array([[22, 28],
+                    #           [22, 28],
+                    #           [31, 40]])
+                </code-block>
+                <list>
+                    <li>내적은 행렬에 바로 dot 메서드를 호출하여 실행할 수도 있습니다.</li>
+                </list>
+            </step>
+        </procedure>
+    </chapter>
+
+    <chapter title="broadcasting">
+        <procedure>
+            <step>
+                <code-block lang="python">
+                    a = np.array([[1, 2, 3],
+                                  [2, 3, 4]])
+
+                    b = np.array([[3, 3, 3],
+                                  [3, 3, 3]])
+
+                    a + b
+                    # -> array([[4, 5, 6],
+                    #           [5, 6, 7]])
+                </code-block>
+                <list>
+                    <li>a 배열의 각 요소에 3을 더하기 위해 모든 요소가 3인 배열을 생성해줍니다.</li>
+                    <li>shape 같기 때문에 덧셈이 가능합니다.</li>
+                </list>
+            </step>
+            <step>
+                <code-block lang="python">
+                    a + 3
+                    # -> array([[4, 5, 6],
+                    #           [5, 6, 7]])
+
+                    a - 3
+                    # -> array([[-2, -1, 0],
+                    #           [-1, 0, 1]])
+
+                    a * 3
+                    # -> array([[3, 6, 9],
+                    #           [6, 9, 12]])
+
+                    a / 3
+                    # -> array([[0.33333333, 0.66666667, 1.        ],
+                    #           [0.66666667, 1.        , 1.33333333]])
+                </code-block>
+                <list>
+                    <li>모든 요소에 같은 값에 대한 연산을 진행할때는 broadcasting 을 사용할 수 있습니다.</li>
+                    <li>바로 상수와 연산을 진행하면, 동일한 숫자의 배열과 연산을 진행한 것과 같은 결과를 가져올 수 있습니다.</li>
+                    <li>덧셈 뿐만 아니라 뺄셈, 곱셉, 나눗셈 모두 가능합니다.</li>
                 </list>
             </step>
         </procedure>
