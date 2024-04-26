@@ -11,4 +11,7 @@
         <toc-element topic="part-1-ch-02.topic"/>
         <toc-element topic="1-02-03.topic"/>
     </toc-element>
+    <toc-element topic="part02.topic">
+        <toc-element topic="part-2-01.topic"/>
+    </toc-element>
 </instance-profile>
